@@ -24,8 +24,9 @@ void Container::Center(int window_width, int window_height)//this says center th
         container_position.y = offset + (window_height - container_size.y) / 2.0f;   
     };
 
-void Container::Clamp(Vector2 &point, float radius) const
+/*void Container::Clamp(Vector2 &point, float radius) const
     {
         point.x = max(container_position.x + radius, min(point.x, container_position.x + container_size.x - radius));
-        //point.y = max(container_position.y + radius, min(point.y, container_position.x + container_size.x -radius)); //dont need this rn
+        point.y = max(container_position.y + radius, min(point.y, container_position.y + container_size.y - radius)); //dont need this rn
     };
+*/

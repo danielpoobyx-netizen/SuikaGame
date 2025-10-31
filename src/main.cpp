@@ -28,12 +28,17 @@ int main()
                 ClearBackground(BLUE); //clear backhroudd
                 container.Draw(); //draw container
                 
+                
+                
                 tier1.Move();
+                tier1.ReleaseChecker();
+                tier1.Release();
                 tier1.Gravity();
                 tier1.Draw(); //draw tier1
+                tier1.Limit(container.container_position, container.container_size);
                 
                 //Limit.x
-                tier1.StayInside(container);
+                //tier1.StayInside(container);
                 
                 EndDrawing();
             }

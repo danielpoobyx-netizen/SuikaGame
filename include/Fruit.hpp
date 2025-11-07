@@ -1,7 +1,18 @@
 #pragma once
+#include <string>
+#include "FruitType.hpp"
 #include "raylib.h"
 
+using namespace std;
 class Container;
+
+/*struct FruitType {
+    string name;
+    Vector2 position;
+    int size;
+    Color color;
+    float speed;
+};*/
 
 //to make the fruit we need its _position_size_color
 class Fruit
@@ -11,6 +22,9 @@ class Fruit
             int fruit_size_r;
             Color fruit_color;
             float fruit_speed;
+            
+            //Spawn_Positions
+            Vector2 spawn_point;
 
             //fruit// gravity
             Vector2 conSize;
@@ -22,8 +36,8 @@ class Fruit
             bool IsHeld = true;
             bool grounded = false;
             
-
-            Fruit(Vector2 position, int size, Color color, int speed);
+            //my constructor
+            Fruit(FruitType type);
             void Draw();
             void Move();
             //void StayInside(const Container &container);
@@ -33,4 +47,5 @@ class Fruit
             void Gravity();
             void Release();
             void Held();
+            void Replace(FruitType type);
     };

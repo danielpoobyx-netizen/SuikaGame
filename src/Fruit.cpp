@@ -2,20 +2,22 @@
 #include <vector>
 #include "raymath.h"
 #include "Fruit.hpp"
+#include "FruitType.hpp"
 #include "Container.hpp"
 #include <iostream>
+#include <cstdlib>
 
 //this automatically loads but it needs to be specified when making a object
-Fruit::Fruit(Vector2 position, int size, Color color, int speed)
+Fruit::Fruit(FruitType type)
     {
-        fruit_pos = position;
-        fruit_size_r = size;
-        fruit_color = color;
-        fruit_speed = speed;
+        fruit_pos = type.spawnpoint;
+        fruit_size_r = type.size;
+        fruit_color = type.color;
+        fruit_speed = type.speed;
     };
 
 
-void Fruit::Draw()
+void Fruit::Draw() 
     {
         //remember you are using vector2 so use a vector2.Ie the vector version of DrawCircleV  
         DrawCircleV(fruit_pos, fruit_size_r, fruit_color);
@@ -67,4 +69,19 @@ void Fruit::Limit(Vector2 container_position, Vector2 conSize)
                 grounded = true;
             }
     }
-//when groudned i want the fruit to act like a regular ball
+//creates a new fruit object with the same parameters as if its being held
+void Fruit::Replace(FruitType type)
+    {
+        fruit_pos.y = {200};
+        fruit_size_r = type.size;
+        fruit_color = type.color;
+        fruit_speed = type.speed;
+
+        IsFalling = false;
+        IsHeld = true;
+        grounded = false;
+    }
+
+
+
+
